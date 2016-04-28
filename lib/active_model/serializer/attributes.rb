@@ -33,11 +33,11 @@ module ActiveModel
         # @example
         #   class AdminAuthorSerializer < ActiveModel::Serializer
         #     attributes :id, :name, :recent_edits
-        def attributes(*attrs)
+        def attributes(*attrs, **opts, &block)
           attrs = attrs.first if attrs.first.class == Array
 
           attrs.each do |attr|
-            attribute(attr)
+            attribute(attr, **opts, &block)
           end
         end
 
